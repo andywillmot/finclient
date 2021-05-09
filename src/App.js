@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
+import Loading from "./Loading"
+import Main from "./Main"
+import Test from "./Test"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Main />
   );
 }
 
-export default App;
+export default withAuthenticationRequired(App, {
+  onRedirecting: () => <Loading />,
+});
+
+
+
+
+
