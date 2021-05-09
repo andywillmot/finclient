@@ -16,7 +16,7 @@ export const SubcategoryList = (props) => (
                 <TextField source="name" />
             </ReferenceField> 
             <TextField source="category" />
-            <EditButton basePath="/subcategories" />
+            <EditButton basePath="/subcategorys" />
         </Datagrid>
     </List>
 );

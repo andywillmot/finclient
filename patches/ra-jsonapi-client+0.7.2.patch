@@ -1,0 +1,26 @@
+diff --git a/node_modules/ra-jsonapi-client/build/index.js b/node_modules/ra-jsonapi-client/build/index.js
+index 87157be..dd93262 100644
+--- a/node_modules/ra-jsonapi-client/build/index.js
++++ b/node_modules/ra-jsonapi-client/build/index.js
+@@ -124,7 +124,7 @@ exports.default = function (apiUrl) {
+       case _actions.GET_MANY:
+         {
+           var _query = (0, _qs.stringify)({
+-            'filter[id]': params.ids
++            'filter[id.in]': params.ids
+           }, { arrayFormat: settings.arrayFormat });
+ 
+           url = apiUrl + '/' + resource + '?' + _query;
+diff --git a/node_modules/ra-jsonapi-client/src/index.js b/node_modules/ra-jsonapi-client/src/index.js
+index bb104cb..f85c20a 100644
+--- a/node_modules/ra-jsonapi-client/src/index.js
++++ b/node_modules/ra-jsonapi-client/src/index.js
+@@ -100,7 +100,7 @@ export default (apiUrl, userSettings = {}) => (type, resource, params) => {
+ 
+     case GET_MANY: {
+       const query = stringify({
+-        'filter[id]': params.ids,
++        'filter[id.in]': params.ids,
+       }, { arrayFormat: settings.arrayFormat });
+ 
+       url = `${apiUrl}/${resource}?${query}`;

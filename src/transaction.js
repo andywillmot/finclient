@@ -15,9 +15,9 @@ export const TransactionList = (props) => (
             <TextField source="title" />
             <TextField source="ttype" />
             <NumberField source="value" options={{ style: 'currency', currency: 'GBP' }}/>
-            <ReferenceField label="Sub Category" source="subcategory_id" reference="subcategories" link="show">
+            <ReferenceField label="Sub Category" source="subcategory_id" reference="subcategorys" link="show">
                 <TextField source="name" />
-            </ReferenceField> />
+            </ReferenceField>
             <TextField source="category" />
             <EditButton basePath="/transactions" />
         </Datagrid>

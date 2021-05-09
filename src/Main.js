@@ -26,12 +26,14 @@ export default function App() {
     rootRef: 'root_collection/some_document'
   }
 
-  const dataProvider = jsonapiClient(apiOrigin);
+  const settings = { arrayFormat: 'comma' };
+
+  const dataProvider = jsonapiClient(apiOrigin, settings);
 
   return (
     <Admin dataProvider={dataProvider}>
       <Resource name="transactions" list={TransactionList} edit={TransactionEdit} />
-      <Resource name="subcategories" list={SubcategoryList} />
+      <Resource name="subcategorys" list={SubcategoryList} />
     </Admin>
   );
 }
