@@ -1,7 +1,7 @@
 // in posts.js
 //import React from "react";
 
-import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, NumberField, EditButton, TextInput, DateInput, ReferenceField } from 'react-admin';
+import { List, NumberInput, ReferenceInput, Datagrid, Edit, Create, SimpleForm, DateField, TextField, NumberField, EditButton, TextInput, DateInput, ReferenceField, AutocompleteInput, Show } from 'react-admin';
 import ListIcon from '@material-ui/icons/List';
 export const TransactionIcon = ListIcon;
 
@@ -31,13 +31,16 @@ const TransactionTitle = ({ record }) => {
 export const TransactionEdit = (props) => (
     <Edit title={<TransactionTitle />} {...props}>
         <SimpleForm>
-            <TextInput disabled source="account" />
-            <DateInput disabled source="date" />
-            <TextInput disabled source="title" />
-            <TextInput disabled source="ttype" />
-            <TextInput disabled source="value" options={{ style: 'currency', currency: 'GBP' }}/>
-            <TextInput source="subcategory" />
-            <TextInput source="category" />
+            <TextField source="account" />
+            <DateField source="date" />
+            <TextField source="title" />
+            <TextField source="ttype" />
+            <ReferenceInput source="subcategory_id" reference="subcategorys" allowEmpty 
+                            perPage="100" sort= {{ field: 'name', order: 'ASC'}}
+                            filterToQuery={searchText => (searchText ? { 'name.icontains': searchText } : {})}>
+                <AutocompleteInput optionText="name" />
+            </ReferenceInput>
+            <NumberField source="value" />
         </SimpleForm>
     </Edit>
 );
